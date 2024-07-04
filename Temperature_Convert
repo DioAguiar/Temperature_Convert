@@ -1,0 +1,85 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Conversor_de_Temperatura
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Conversor de temperatura");
+            Console.WriteLine("Escolha a conversão:");
+            Console.WriteLine("1. Celsius para Fahrenheit");
+            Console.WriteLine("2. Fahrenheit para Celsius");
+            Console.WriteLine("3. Celsius para Kelvin");
+            Console.WriteLine("4. Kelvin para Celsius");
+            Console.WriteLine("5. Fahrenheit para Kelvin");
+            Console.WriteLine("6. Kelvin para Fahrenheit");
+
+            int escolha = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite a temperatura a ser convertida:");
+            double temperatura = double.Parse(Console.ReadLine());
+            double resultado = 0;
+
+            switch (escolha)
+            {
+                case 1:
+                    resultado = CelsiusParaFahrenheit(temperatura);
+                    Console.WriteLine($"{temperatura} °C = {resultado} °F");
+                    break;
+                case 2:
+                    resultado = FahrenheitParaCelsius(temperatura);
+                    Console.WriteLine($"{temperatura} °F = {resultado} °C");
+                    break;
+                case 3:
+                    resultado = CelsiusParaKelvin(temperatura);
+                    Console.WriteLine($"{temperatura} °C = {resultado} K");
+                    break;
+                case 4:
+                    resultado = KelvinParaCelsius(temperatura);
+                    Console.WriteLine($"{temperatura} K = {resultado} °C");
+                    break;
+                case 5:
+                    resultado = FahrenheitParaKelvin(temperatura);
+                    Console.WriteLine($"{temperatura} °F = {resultado} K");
+                    break;
+                case 6:
+                    resultado = KelvinParaFahrenheit(temperatura);
+                    Console.WriteLine($"{temperatura} K = {resultado} °F");
+                    break;
+                default:
+                    Console.WriteLine("Escolha inválida");
+                    break;
+            }
+
+        }
+        static double CelsiusParaFahrenheit(double celsius)
+        {
+            return (celsius * 9 / 5) + 32;
+        }
+        static double FahrenheitParaCelsius(double fahrenheit)
+        {
+            return (fahrenheit - 32 * 5 / 9);
+        }
+        static double CelsiusParaKelvin(double celsius)
+        {
+            return celsius + 273.15;
+        }
+        static double KelvinParaCelsius(double kelvin)
+        {
+            return kelvin - 273.15;
+        }
+        static double FahrenheitParaKelvin(double fahrenheit)
+        {
+            return (fahrenheit - 32) * 5 / 9 + 273.15;
+        }
+        static double KelvinParaFahrenheit(double kelvin)
+        {
+            return (kelvin - 273.15) * 9/5 + 32;
+        }
+    }
+}   
